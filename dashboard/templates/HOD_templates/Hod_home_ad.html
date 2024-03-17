@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <title>Hod page</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link rel="stylesheet" href="style.css" />
+        <script
+            type="text/javascript"
+            src="script.js"
+        ></script>
+    </head>
+    <body>
+        <header>
+            <div>
+                <a href="/">
+                    <div class="logo">
+                        <i
+                            class="fa-solid fa-graduation-cap"
+                        ></i>
+                        H.O.D 
+                    </div>
+                </a>
+            </div>
+
+            <div class="user">
+                <div>
+                    <img
+                        src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png"
+                        alt="user-image"
+                    />
+                </div>
+                <div class="name">username</div>
+
+                <ul>
+                    <li>Logout</li>
+                </ul>
+            </div>
+        </header>
+
+        <div id="main">
+            
+            <div id="navbar">
+                <div class="menu">Menu</div>
+                <nav>
+                    <a href="Hod_home.html">
+                        <li>
+                            <i class="fa fa-home"></i> Home
+                        </li>
+                    </a>
+                    <a href="Faculty.html">
+                        <li>
+                            <i class="fa fa-user"></i>
+                            Faculty
+                        </li>
+                    </a>
+                   
+                </nav>
+            </div>
+
+            <div id="student_record">
+                <div class="page-title">
+                    <h2>ADD STUDENT</h2>
+                    <a href="add_student_details.html"><button type="button" class="add_button">+</button></a>
+                </div>
+                <div id="expese-record" class="record">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student Id</th>
+                                <th>Student Name</th>
+                                <th>Branch</th>
+                                <th>Semester</th>
+                                <th>Cgpa</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>0201CS211022</td>
+                                <td>ARUNIKA BHATACHARYA</td>
+                                <td>CSE</td>
+                                <td>6</td>
+                                <td>8.12</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <script>
+                    // Retrieve student data from local storage
+                    const studentData = JSON.parse(localStorage.getItem('studentData'));
+            
+                    // Reference to the table body
+                    const tableBody = document.querySelector('#student_record tbody');
+            
+                    // Populate the table with student data
+                    if (studentData && studentData.length > 0) {
+                        studentData.forEach(student => {
+                            const row = document.createElement('tr');
+                            // Assuming the keys in student object match the table headers
+                            Object.values(student).forEach(value => {
+                                const cell = document.createElement('td');
+                                cell.textContent = value;
+                                row.appendChild(cell);
+                            });
+                            tableBody.appendChild(row);
+                        });
+                    } else {
+                        // If no data is available, display a message
+                        const row = document.createElement('tr');
+                        const cell = document.createElement('td');
+                        cell.setAttribute('colspan', '5'); // Adjust the colspan according to the number of columns
+                        cell.textContent = 'No student data available';
+                        row.appendChild(cell);
+                        tableBody.appendChild(row);
+                    }
+                </script>
+                
+
+                </div>
+        </div>
+    </body>
+</html>

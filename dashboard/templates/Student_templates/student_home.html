@@ -1,0 +1,12 @@
+<!-- student_home.html -->
+{% comment %} 
+{% extends 'Student_templates/index_student.html' %} {% endcomment %}
+
+{% block page_title %}
+    Student Home
+{% endblock page_title %}
+
+{% block main_content %}
+    <h2>Hello, {{ student_name }}</h2>
+    <p>This is your personalized student home page. Feel free to add more content here.</p>
+{% endblock main_content %}
